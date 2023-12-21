@@ -8,12 +8,12 @@ const getProductsLayout = () => {
   const comfyLayout = localStorage.getItem("layout");
   const newLayout = comfyLayout ? comfyLayout : "grid";
   return newLayout;
-};
+}; // getting the product layout from the local storage
 
 const ProductsContainer = () => {
   const { metaInfo } = useLoaderData();
   const totalProducts = metaInfo.pagination.total;
-  const [productLayout, setProductLayout] = useState(getProductsLayout());
+  const [productLayout, setProductLayout] = useState(getProductsLayout()); // initializing the layout from the local storage as the value
 
   const setActiveStyles = (pattern) => {
     return `btn btn-circle btn-md text-lg ${
@@ -32,8 +32,8 @@ const ProductsContainer = () => {
           <button
             type="button"
             onClick={() => {
-              localStorage.setItem("layout", "grid");
-              setProductLayout("grid");
+              localStorage.setItem("layout", "grid"); // set a layout value to the local storage
+              setProductLayout("grid"); // update the product layout state
             }}
             className={setActiveStyles("grid")}
           >
@@ -42,8 +42,8 @@ const ProductsContainer = () => {
           <button
             type="button"
             onClick={() => {
-              localStorage.setItem("layout", "list");
-              setProductLayout("list");
+              localStorage.setItem("layout", "list"); // set a layout value to the local storage
+              setProductLayout("list"); // update the product layout state
             }}
             className={setActiveStyles("list")}
           >

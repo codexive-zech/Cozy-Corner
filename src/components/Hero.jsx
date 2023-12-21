@@ -14,9 +14,11 @@ const Hero = () => {
           We are changing the way people shop
         </h1>
         <p className=" max-w-lg text-lg mt-6 leading-6">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni qui
-          nobis eum vitae sapiente voluptas praesentium voluptates suscipit,
-          quas culpa?
+          Transform Your Home, Elevate Your Living. Welcome to Cozy Corner, your
+          destination foe exquisite household essentials. Dive into a world of
+          comfort and style with our curated selection of chairs, tables,
+          lighting solutions, beds, and more. Redefine your living space - shop
+          now for quality and craftsmanship that speaks volumes.
         </p>
         <Link to="/products" className=" btn btn-primary p-2 mt-6 uppercase ">
           Our Products

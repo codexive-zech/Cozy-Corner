@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import day from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-day.extend(advancedFormat);
+day.extend(advancedFormat); // here because of day.js
 
 const OrderList = () => {
   const { productOrders, metaInfo } = useLoaderData();
@@ -13,7 +13,7 @@ const OrderList = () => {
         </h3>
         <div className="overflow-x-auto">
           <table className="table table-zebra">
-            {/* head */}
+            {/* Table Head */}
             <thead>
               <tr>
                 <th>Name</th>
@@ -23,6 +23,7 @@ const OrderList = () => {
                 <th className=" hidden md:block">Date</th>
               </tr>
             </thead>
+            {/* Table Body */}
             <tbody>
               {productOrders.map((order) => {
                 const { name, address, orderTotal, numItemsInCart, createdAt } =
@@ -30,7 +31,7 @@ const OrderList = () => {
                 const { id } = order.id;
                 const dateOrdered = day(createdAt).format(
                   "hh:mm a - MMM Do, YYYY"
-                );
+                ); // construct the date into a nice format
                 return (
                   <tr key={id}>
                     <th>{name}</th>
@@ -41,7 +42,6 @@ const OrderList = () => {
                   </tr>
                 );
               })}
-              {/* row 3 */}
             </tbody>
           </table>
         </div>

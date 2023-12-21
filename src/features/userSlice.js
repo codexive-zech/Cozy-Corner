@@ -14,8 +14,8 @@ const getUserFromStorage = () => {
 }; // convert the user in the local storage to an object and retrieve it
 
 const defaultState = {
-  user: getUserFromStorage(),
-  theme: getThemeFromStorage(),
+  user: getUserFromStorage(), // getting the user object from the local storage
+  theme: getThemeFromStorage(), // getting the theme object from the local storage
 };
 
 const userSlice = createSlice({

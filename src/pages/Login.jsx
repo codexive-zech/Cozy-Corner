@@ -8,25 +8,27 @@ import { useDispatch } from "react-redux";
 const login = "/auth/local";
 
 export const action =
-  (store) =>
-  async ({ request }) => {
-    const formData = await request.formData(); // retrieve the formData that has been serialized from the browser api
-    const requestBody = Object.fromEntries(formData); // convert it into an object
+  // adding the store as a parameter to the action func
 
-    try {
-      const response = await customFetch.post(login, requestBody);
-      store.dispatch(loginUser(response.data)); // dispatch an action directly from the store
-      console.log(response);
-      toast.success("Successfully Logged In");
-      return redirect("/");
-    } catch (error) {
-      const errorMessage =
-        error?.response?.data?.error?.message ||
-        "Please Check Your credentials";
-      toast.error(errorMessage);
-      return null;
-    }
-  }; // Route Action func for Login
+    (store) =>
+    async ({ request }) => {
+      const formData = await request.formData(); // retrieve the formData that has been serialized from the browser api
+      const requestBody = Object.fromEntries(formData); // convert it into an object
+
+      try {
+        const response = await customFetch.post(login, requestBody);
+        store.dispatch(loginUser(response.data)); // dispatch an action directly from the store
+        console.log(response);
+        toast.success("Successfully Logged In");
+        return redirect("/");
+      } catch (error) {
+        const errorMessage =
+          error?.response?.data?.error?.message ||
+          "Please Check Your credentials";
+        toast.error(errorMessage);
+        return null;
+      }
+    }; // Route Action func for Login
 
 const Login = () => {
   const dispatch = useDispatch();

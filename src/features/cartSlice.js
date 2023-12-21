@@ -22,7 +22,7 @@ const cartSlice = createSlice({
       toast.error("Payment Info Must Not be Empty");
       const cart = state.cartItems;
       state.cartItems = cart;
-    },
+    }, // if payment in the checkout route is not complete the cart should remain same
     addItem: (state, action) => {
       const { product } = action.payload; // getting the payload product object
       const cartItem = state.cartItems.find(

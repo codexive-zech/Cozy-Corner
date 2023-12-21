@@ -15,7 +15,7 @@ const Header = () => {
     dispatch(clearItem());
     queryClient.removeQueries();
     dispatch(logoutUser());
-  }; // dispatch the func that log user's out and clear the cart items
+  }; // dispatch the func that log user's out, clear the cart items and remove all the queries that has been cached using R-Query
   return (
     <header className=" bg-neutral py-2 text-neutral-content ">
       <div className="align-element flex justify-center sm:justify-end">

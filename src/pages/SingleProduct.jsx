@@ -6,17 +6,20 @@ import { addItem } from "../features/cartSlice";
 
 const singleProductQuery = (productId) => {
   return {
-    queryKey: ["singleProduct", productId],
-    queryFn: () => customFetch(`/products/${productId}`),
+    queryKey: [
+      "singleProduct",
+      productId, // make a new request if the product id changes
+    ], // key
+    queryFn: () => customFetch(`/products/${productId}`), // query ajax function taking in the params needed for the request
   };
-};
+}; // R-Query ajax request implementation
 
 export const loader =
   (queryClient) =>
   async ({ params }) => {
     const response = await queryClient.ensureQueryData(
       singleProductQuery(params.productId)
-    );
+    ); // accessing the query func and ensuring a new request is made via the query client if that query is not yet cached else return the cached query value
     const product = response.data.data;
     return { product };
   }; // loader fetching single product

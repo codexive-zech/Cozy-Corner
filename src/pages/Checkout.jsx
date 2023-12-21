@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
 
 export const loader = (store) => () => {
-  const user = store.getState().user.user;
+  const user = store.getState().user.user; // getting the user state from the user slice
   if (!user) {
     toast.warning("You Must Be Authenticated");
     return redirect("/login");
-  }
+  } // if the user is empty/null then do not show the checkout page redirect to the login page
   return null;
-};
+}; // loader func for private routing
 
 const Checkout = () => {
   const { cartItemNumb } = useSelector((state) => state.cart);

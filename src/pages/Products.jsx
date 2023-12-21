@@ -4,33 +4,37 @@ import { customFetch } from "../utils";
 const productsUrl = "/products";
 
 const productsQuery = (queryParams) => {
-  const { search, category, company, order, price, shipping } = queryParams;
+  const { search, category, company, order, price, shipping } = queryParams; // params value been destructured
   return {
     queryKey: [
       "products",
-      search ?? "",
-      category ?? "all",
-      company ?? "all",
-      order ?? "a-z",
-      shipping ?? false,
-      price ?? 100000,
-      queryParams.page ? parseInt(queryParams.page) : 1,
-    ],
-    queryFn: () => customFetch(productsUrl, { params: queryParams }),
+      search ?? "", // if search value from the query params is null/undefined take right value else use left search value and make a new request if the search value changes in the params
+      category ?? "all", // if category value from the query params is null/undefined take right value else use left category value and make a new request if the category value changes in the params
+      company ?? "all", // if company value from the query params is null/undefined take right value else use left company value and make a new request if the company value changes in the params
+      order ?? "a-z", // if order value from the query params is null/undefined take right value else use left order value and make a new request if the order value changes in the params
+      shipping ?? false, // if shipping value from the query params is null/undefined take right value else use left shipping value and make a new request if the shipping value changes in the params
+      price ?? 100000, // if price value from the query params is null/undefined take right value else use left price value and make a new request if the price value changes in the params
+      queryParams.page ? parseInt(queryParams.page) : 1, // make a new request when the page value from the params changes
+    ], // key
+    queryFn: () => customFetch(productsUrl, { params: queryParams }), // query ajax function taking in the params needed for the request as a single object in GET
   };
-};
+}; // R-Query ajax request implementation
 
 export const loader =
-  (queryClient) =>
-  async ({ request }) => {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    const response = await queryClient.ensureQueryData(productsQuery(params));
-    const products = response.data.data;
-    const metaInfo = response.data.meta;
-    return { products, metaInfo, params };
-  };
+  // adding the queryClient as a parameter to the action func
+
+
+    (queryClient) =>
+    async ({ request }) => {
+      const params = Object.fromEntries([
+        ...new URL(request.url).searchParams.entries(),
+      ]); // getting the url query params as an Obj key/value pair
+
+      const response = await queryClient.ensureQueryData(productsQuery(params)); // accessing the query func and ensuring a new request is made via the query client if that query is not yet cached else return the cached query value
+      const products = response.data.data;
+      const metaInfo = response.data.meta;
+      return { products, metaInfo, params };
+    };
 
 const Products = () => {
   return (

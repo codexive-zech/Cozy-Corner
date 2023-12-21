@@ -3,7 +3,7 @@ import { formatPrice } from "../utils";
 
 const FormRange = ({ label, name, size, price }) => {
   const step = 1000; // $10 * 10cent
-  const maxPrice = 100000;
+  const maxPrice = 100000; // max price
   const [selectedPrice, setSelectedPrice] = useState(price || maxPrice); // handling the state of the price range value input
   return (
     <>

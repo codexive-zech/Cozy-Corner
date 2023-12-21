@@ -36,7 +36,7 @@ const queryClient = new QueryClient({
       staleTime: 1000 * 60 * 10,
     },
   },
-});
+}); // creating a new Query Client instance for react query
 
 const router = createBrowserRouter([
   {

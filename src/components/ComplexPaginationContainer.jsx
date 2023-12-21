@@ -26,14 +26,15 @@ const ComplexPaginationContainer = () => {
         {pageNumber}
       </button>
     );
-  };
+  }; // a mini component for adding the pagination button into the page
 
   const renderPageButton = () => {
-    const pageButtons = [];
+    const pageButtons = []; // an empty page buttons array
 
     // First Page Button
-    pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 }));
+    pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 })); // adding the first button using the mini component (addPageButton) into the page buttons array
 
+    // display this button as long as the page is less than 2
     if (page > 2) {
       // First Dots Section
       pageButtons.push(
@@ -46,8 +47,9 @@ const ComplexPaginationContainer = () => {
     // Active/Current Page Button
     if (page !== 1 && page !== pageCount) {
       pageButtons.push(addPageButton({ pageNumber: page, activeClass: true }));
-    }
+    } // adding the middle active/current button using the mini component (addPageButton) into the page buttons array as long as the page is not the first & last page
 
+    // display this button as long as the page not the last page
     if (page < pageCount - 1) {
       // Last Dots Section
       pageButtons.push(
@@ -60,8 +62,8 @@ const ComplexPaginationContainer = () => {
     // Last Page Button
     pageButtons.push(
       addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
-    );
-    return pageButtons;
+    ); // adding the last button using the mini component (addPageButton) into the page buttons array
+    return pageButtons; // display the page buttons
   };
 
   if (pageCount < 2) return null; // display nothing when the page count is less than 2
@@ -80,6 +82,7 @@ const ComplexPaginationContainer = () => {
         >
           Prev
         </button>
+        {/* displaying the buttons for pagination */}
         {renderPageButton()}
         <button
           className=" btn btn-xs md:btn-sm join-item"
