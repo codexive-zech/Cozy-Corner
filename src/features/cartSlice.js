@@ -18,6 +18,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: getCartFromLocalStorage(),
   reducers: {
+    emptyDetails: (state) => {
+      toast.error("Payment Info Must Not be Empty");
+      const cart = state.cartItems;
+      state.cartItems = cart;
+    },
     addItem: (state, action) => {
       const { product } = action.payload; // getting the payload product object
       const cartItem = state.cartItems.find(
@@ -66,6 +71,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, editItem, removeItem, clearItem } = cartSlice.actions; // cart slice actions
+export const { addItem, editItem, removeItem, clearItem, emptyDetails } =
+  cartSlice.actions; // cart slice actions
 
 export default cartSlice.reducer;

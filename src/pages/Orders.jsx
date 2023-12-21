@@ -58,7 +58,7 @@ export const loader =
 
 const Orders = () => {
   const { metaInfo } = useLoaderData();
-  console.log("Pagination Data:", metaInfo.pagination);
+
   if (metaInfo.pagination.total < 1) {
     return (
       <>
