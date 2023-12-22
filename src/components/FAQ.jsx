@@ -27,7 +27,7 @@ const FAQ = () => {
     },
   ];
   return (
-    <>
+    <div className=" hidden lg:grid">
       <div className=" text-xl md:text-2xl lg:text-3xl font-bold capitalize mt-24 mb-5 text-center">
         Frequently Asked Question
       </div>
@@ -39,13 +39,13 @@ const FAQ = () => {
             <div className="collapse-title text-base md:text-xl font-medium capitalize">
               {title}
             </div>
-            <div className="collapse-content border-t border-primary-content ">
+            <div className="collapse-content border-t border-primary-content">
               <p className=" text-sm md:text-base mt-3">{text}</p>
             </div>
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 

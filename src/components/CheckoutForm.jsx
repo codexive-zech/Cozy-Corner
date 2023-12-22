@@ -10,6 +10,7 @@ const createOrder = "/orders";
 export const action =
   // adding the store and queryClient as a parameter to the action func
 
+
     (store, queryClient) =>
     async ({ request }) => {
       const formData = await request.formData(); // retrieve the formData that has been serialized from the browser api
@@ -31,7 +32,7 @@ export const action =
 
             // once the transaction is successful (make a request to the Orders creation endpoint)
             onSuccess: async (transaction) => {
-              const message = `Payment Complete!. Reference is ${transaction.reference}`;
+              const message = `Payment Complete!. Transaction is ${transaction.message}`;
               toast.success(message);
 
               // Introduce a 5-second delay here
