@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import NavLinks from "./NavLinks";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../features/userSlice";
+import logo from "../assets/cozy_logo.png";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -18,11 +19,8 @@ const Navbar = () => {
       <div className="align-element navbar">
         <div className=" navbar-start">
           {/* Logo */}
-          <NavLink
-            to="/"
-            className=" hidden lg:flex items-center btn btn-primary text-3xl"
-          >
-            C
+          <NavLink to="/" className=" hidden lg:flex items-center ">
+            <img src={logo} alt="Logo" />
           </NavLink>
           {/* Hamburger and Mobile Menu */}
           <div className=" dropdown">

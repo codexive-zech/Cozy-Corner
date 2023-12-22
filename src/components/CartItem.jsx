@@ -66,7 +66,31 @@ const CartItem = ({ item }) => {
           </p>
         </div>
         {/* Amount & Remove */}
-        <div className=" md:ml-28 md:-mt-2">
+        <div className=" flex items-center justify-around mt-2 lg:hidden md:ml-28 md:-mt-2 ">
+          <div className=" form-control max-w-sm">
+            <label htmlFor="amount" className="label">
+              <span className=" label-text">Amount</span>
+            </label>
+            <select
+              name="amount"
+              id="amount"
+              className=" mt-2 select select-bordered select-md select-base"
+              value={amount}
+              onChange={handleCartAmountEdit}
+            >
+              {generateAmountOption(amount + 5)}
+            </select>
+          </div>
+          <button
+            type="button"
+            className=" mt-2 link link-primary link-hover text-sm"
+            onClick={handleRemoveCartItem}
+          >
+            Remove
+          </button>
+        </div>
+        {/* Desktop */}
+        <div className=" md:ml-28 md:-mt-2 hidden lg:block ">
           <div className=" form-control max-w-xs">
             <label htmlFor="amount" className="label">
               <span className=" label-text">Amount</span>
@@ -89,7 +113,9 @@ const CartItem = ({ item }) => {
             Remove
           </button>
         </div>
-        <p className=" font-medium md:ml-auto">{formatPrice(price)}</p>
+        <p className=" font-semibold lg:font-medium text-center  lg:text-right md:ml-auto">
+          {formatPrice(price)}
+        </p>
       </article>
     </>
   );
