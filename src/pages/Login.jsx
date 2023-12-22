@@ -4,11 +4,15 @@ import { customFetch } from "../utils";
 import { toast } from "react-toastify";
 import { loginUser } from "../features/userSlice";
 import { useDispatch } from "react-redux";
+import loginImg from "../assets/login.svg";
+import { AiTwotoneEye, AiTwotoneEyeInvisible } from "react-icons/ai";
+import { useState } from "react";
 
 const login = "/auth/local";
 
 export const action =
   // adding the store as a parameter to the action func
+
 
     (store) =>
     async ({ request }) => {
@@ -33,6 +37,11 @@ export const action =
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const loginGuestUser = async () => {
     try {
@@ -50,17 +59,45 @@ const Login = () => {
   }; // guest user login func
 
   return (
-    <section className=" grid place-items-center h-screen py-12 lg:py-10 ">
+    <section className=" grid lg:grid-cols-2 place-items-center m-0 ">
+      <div className=" hidden lg:flex items-center lg:justify-center lg:h-screen">
+        <img src={loginImg} alt="Login" className=" w-96 h-auto object-fit" />
+      </div>
       <Form
-        className="card w-96 bg-base-100 shadow-lg p-8 flex flex-col gap-y-4"
+        className="my-10 md:my-0 p-8 flex flex-col gap-y-4 w-[95vw] mx-auto md:w-9/12 "
         method="POST"
       >
-        <h1 className=" text-3xl font-bold text-center ">Login</h1>
-        <FormInput type="email" label="Email" name="identifier" />
-        <FormInput type="password" label="Password" name="password" />
+        <h1 className=" text-2xl lg:text-3xl font-bold text-center mb-3">
+          Welcome Back, Login!
+        </h1>
+        <FormInput
+          type="email"
+          label="Email"
+          name="identifier"
+          size="input-md"
+        />
+        <div className=" relative">
+          <FormInput
+            type={showPassword ? "text" : "password"}
+            label="Password"
+            name="password"
+            size="input-md"
+          />
+          <span
+            className=" absolute right-4 bottom-4 cursor-pointer text-secondary"
+            onClick={handleShowPassword}
+          >
+            {showPassword ? (
+              <AiTwotoneEyeInvisible size={20} />
+            ) : (
+              <AiTwotoneEye size={20} />
+            )}
+          </span>
+        </div>
         <div className=" mt-3">
           <SubmitBtn text="Login" />
         </div>
+        <div className="divider">OR</div>
         <button
           type="button"
           className=" btn btn-secondary btn-block capitalize"

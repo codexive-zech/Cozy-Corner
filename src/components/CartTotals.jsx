@@ -7,7 +7,7 @@ const CartTotals = () => {
   );
   return (
     <>
-      <div className=" card bg-base-200 mb-4 ">
+      <div className=" card bg-base-200 mb-4 mt-5">
         <div className=" card-body">
           <p className=" flex  text-sm justify-between border-b border-base-300 pb-3">
             <span>Subtotal</span>

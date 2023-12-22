@@ -4,6 +4,23 @@
 
 @layer components {
   .align-element {
-    @apply w-[95vw] lg:max-w-6xl mx-auto lg:px-8;
+    @apply w-[90vw] lg:max-w-6xl mx-auto lg:px-8;
+  }
+  body::-webkit-scrollbar {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #e15659 #e15659;
+  }
+
+  body::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gradient-to-tr from-primary to-secondary;
+  }
+
+  body::-webkit-scrollbar-track {
+    @apply bg-gradient-to-b from-primary-content to-secondary-content;
   }
 }
