@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <Provider store={store}>
       <App />
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-right" className=" capitalize" />
     </Provider>
   </>
 );

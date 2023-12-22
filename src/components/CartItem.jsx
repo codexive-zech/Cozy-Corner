@@ -11,11 +11,11 @@ const CartItem = ({ item }) => {
     title.length > 10 ? title.substring(0, 10) + "..." : title;
 
   const handleRemoveCartItem = () => {
-    dispatch(removeItem({ cartId }));
+    dispatch(removeItem({ cartId, title }));
   }; // dispatch the func that removes items from the cart
 
   const handleCartAmountEdit = (e) => {
-    dispatch(editItem({ cartId, amount: e.target.value }));
+    dispatch(editItem({ cartId, amount: e.target.value, title }));
   }; // dispatch the func that edit the item amount from the cart
 
   return (

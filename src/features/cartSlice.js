@@ -36,19 +36,19 @@ const cartSlice = createSlice({
       state.cartItemNumb += product.amount; // increase the cart item number based on the amount from the product payload
       state.cartProductTotal += product.price * product.amount; // increase the total value for each product in the cart
       cartSlice.caseReducers.calculateTotals(state); // reusable slice action
-      toast.success("Added To Cart");
+      toast.success(`${product.title} Added To Cart`);
     },
     editItem: (state, action) => {
-      const { cartId, amount } = action.payload; // getting the payload passed
+      const { cartId, amount, title } = action.payload; // getting the payload passed
       const product = state.cartItems.find((item) => item.cartId === cartId); // check to find if the cart ID in the payload is already in the cartItems array
       state.cartItemNumb += amount - product.amount; // increase the cart item number based on the amount from the payload and the product amount already in the cart local storage
       state.cartProductTotal += product.price * (amount - product.amount); // increasing the product total in the cart when the amount is updated
       product.amount = amount; // updating the amount of the product in the cart to the amount added in the payload
       cartSlice.caseReducers.calculateTotals(state); // reusable slice action
-      toast.success("Cart Updated Successfully");
+      toast.success(`${title} Updated in Cart`);
     },
     removeItem: (state, action) => {
-      const { cartId } = action.payload; // getting the payload passed
+      const { cartId, title } = action.payload; // getting the payload passed
       const product = state.cartItems.find((item) => item.cartId === cartId); // check to find if the cart ID in the payload is already in the cartItems array
       const removeProduct = state.cartItems.filter(
         (item) => item.cartId !== cartId
@@ -57,7 +57,7 @@ const cartSlice = createSlice({
       state.cartItemNumb -= product.amount; // decrease the cart item number based on the amount of the product that was found in the cart items array and then filtered out
       state.cartProductTotal -= product.price * product.amount; // remove the total of the product that was removed in the cart item array
       cartSlice.caseReducers.calculateTotals(state); // reusable slice action
-      toast.success("Product Removed Successfully");
+      toast.success(` ${title} Removed From Cart`);
     },
     clearItem: () => {
       localStorage.setItem("cart", JSON.stringify(defaultState)); // set the cart in the local storage to the default value

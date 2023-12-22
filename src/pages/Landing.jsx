@@ -1,4 +1,5 @@
-import { FeaturedProducts, Hero } from "../components";
+import { FAQ, FeaturedProducts, Hero, Newsletter } from "../components";
+
 import { customFetch } from "../utils";
 
 const featuredProductsUrl = "/products?featured=true";
@@ -21,6 +22,8 @@ const Landing = () => {
     <>
       <Hero />
       <FeaturedProducts />
+      <Newsletter />
+      <FAQ />
     </>
   );
 };
