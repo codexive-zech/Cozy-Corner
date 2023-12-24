@@ -26,7 +26,7 @@ export const action =
             // adding the need info for the transaction
             key: "pk_test_bbf8a22d3fbb78b217cd7f8ace2d4bb455feed57",
             name,
-            amount: orderTotal * 5000,
+            amount: orderTotal * 3000,
             address,
             email: user.email,
 

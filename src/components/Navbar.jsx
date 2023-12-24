@@ -44,6 +44,7 @@ const Navbar = () => {
         <div className=" navbar-end">
           {/* Theme Toggle */}
           <label className=" swap swap-rotate">
+            {/* this hidden checkbox controls the themes state */}
             <input type="checkbox" onChange={handleThemeToggle} />
             <BsSunFill className=" swap-on w-4 h-4" />
             <BsMoonFill className=" swap-off w-4 h-4" />

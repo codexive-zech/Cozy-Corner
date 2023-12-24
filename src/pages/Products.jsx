@@ -26,6 +26,7 @@ export const loader =
 
     (queryClient) =>
     async ({ request }) => {
+      // It takes a URL string from the request.url property. It creates a URL object from that URL string. It extracts the query parameters using the searchParams property. It converts the query parameters into an iterable of key-value pairs using the entries() method. It spreads these key-value pairs into an array. It uses Object.fromEntries() to create a new object where the key-value pairs become properties of the object.
       const params = Object.fromEntries([
         ...new URL(request.url).searchParams.entries(),
       ]); // getting the url query params as an Obj key/value pair

@@ -33,7 +33,7 @@ import { store } from "./app/store";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 10,
+      staleTime: 1000 * 60 * 60,
     },
   },
 }); // creating a new Query Client instance for react query

@@ -41,8 +41,8 @@ const cartSlice = createSlice({
     editItem: (state, action) => {
       const { cartId, amount, title } = action.payload; // getting the payload passed
       const product = state.cartItems.find((item) => item.cartId === cartId); // check to find if the cart ID in the payload is already in the cartItems array
-      state.cartItemNumb += amount - product.amount; // increase the cart item number based on the amount from the payload and the product amount already in the cart local storage
-      state.cartProductTotal += product.price * (amount - product.amount); // increasing the product total in the cart when the amount is updated
+      state.cartItemNumb += amount - product.amount; // This here updates the total number of items in the cart by adjusting it based on the difference between the provided amount and the existing quantity of that item. NOTE:If amount is greater than item.amount, it means that items are being added to the cart. If amount is less than item.amount, it means that items are being removed from the cart.
+      state.cartProductTotal += product.price * (amount - product.amount); // This is calculating the change in the total cost of the cart based on the price of the item and the change in the quantity of that item. This calculation is then added to the current cart total. If amount is greater than item.amount, it means more items are being added, so the cost of those additional items is calculated by multiplying it with the price of the item. If amount is less than item.amount, it means items are being removed, so the cost of those removed items is subtracted from the cart total.
       product.amount = amount; // updating the amount of the product in the cart to the amount added in the payload
       cartSlice.caseReducers.calculateTotals(state); // reusable slice action
       toast.success(`${title} Updated in Cart`);
