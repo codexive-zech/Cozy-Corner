@@ -17,7 +17,7 @@ import CheckoutForm from "./CheckoutForm";
 import OrderList from "./OrderList";
 import ComplexPaginationContainer from "./ComplexPaginationContainer";
 import Newsletter from "./Newsletter";
-import FAQ from "./FAQ";
+
 import Footer from "./Footer";
 export {
   Footer,
@@ -40,5 +40,4 @@ export {
   OrderList,
   ComplexPaginationContainer,
   Newsletter,
-  FAQ,
 };

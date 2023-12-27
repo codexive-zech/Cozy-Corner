@@ -23,7 +23,6 @@ const Landing = () => {
       <Hero />
       <FeaturedProducts />
       <Newsletter />
-      <FAQ />
     </>
   );
 };
