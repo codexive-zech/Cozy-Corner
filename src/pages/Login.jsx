@@ -35,28 +35,28 @@ export const action =
     }; // Route Action func for Login
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const loginGuestUser = async () => {
-    try {
-      const response = await customFetch.post(login, {
-        identifier: "test@test.com",
-        password: "secret",
-      });
-      dispatch(loginUser(response.data));
-      navigate("/");
-      toast.success("Guest User Logged In");
-    } catch (error) {
-      console.log(error);
-      toast.error("Please Check Your credentials");
-    }
-  }; // guest user login func
+  // const loginGuestUser = async () => {
+  //   try {
+  //     const response = await customFetch.post(login, {
+  //       identifier: "test@test.com",
+  //       password: "secret",
+  //     });
+  //     dispatch(loginUser(response.data));
+  //     navigate("/");
+  //     toast.success("Guest User Logged In");
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("Please Check Your credentials");
+  //   }
+  // }; // guest user login func
 
   return (
     <section className=" grid lg:grid-cols-2 place-items-center m-0 ">
@@ -98,13 +98,7 @@ const Login = () => {
           <SubmitBtn text="Login" />
         </div>
         <div className="divider">OR</div>
-        <button
-          type="button"
-          className=" btn btn-secondary btn-block capitalize"
-          onClick={loginGuestUser}
-        >
-          Guest User
-        </button>
+
         <p className="text-center">
           Not a Member yet?
           <Link

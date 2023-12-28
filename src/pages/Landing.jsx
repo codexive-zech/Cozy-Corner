@@ -1,4 +1,4 @@
-import { FAQ, FeaturedProducts, Hero, Newsletter } from "../components";
+import { FeaturedProducts, Hero, Newsletter } from "../components";
 
 import { customFetch } from "../utils";
 
